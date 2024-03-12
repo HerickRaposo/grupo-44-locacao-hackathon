@@ -1,4 +1,4 @@
-package com.fiap.locacao.dominio.predio.enumertation;
+package com.fiap.locacao.dominio.quartos.predio.enumertation;
 
 import java.util.Arrays;
 import java.util.List;

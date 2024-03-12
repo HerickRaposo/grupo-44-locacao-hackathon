@@ -1,10 +1,9 @@
-package com.fiap.locacao.dominio.predio.dto;
+package com.fiap.locacao.dominio.quartos.predio.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fiap.locacao.dominio.predio.entity.Predio;
-import com.fiap.locacao.dominio.quarto.dto.QuartoDTO;
-import com.fiap.locacao.dominio.quarto.entity.Quarto;
-import jakarta.validation.constraints.NotNull;
+import com.fiap.locacao.dominio.quartos.predio.entity.Predio;
+import com.fiap.locacao.dominio.quartos.quarto.dto.QuartoDTO;
+import com.fiap.locacao.dominio.quartos.quarto.entity.Quarto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

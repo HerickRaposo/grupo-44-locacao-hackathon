@@ -1,8 +1,7 @@
-package com.fiap.locacao.dominio.quarto.dto;
+package com.fiap.locacao.dominio.quartos.quarto.dto;
 
-import com.fiap.locacao.dominio.predio.dto.PredioDTO;
-import com.fiap.locacao.dominio.predio.entity.Predio;
-import com.fiap.locacao.dominio.quarto.entity.Quarto;
+import com.fiap.locacao.dominio.quartos.predio.dto.PredioDTO;
+import com.fiap.locacao.dominio.quartos.quarto.entity.Quarto;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;

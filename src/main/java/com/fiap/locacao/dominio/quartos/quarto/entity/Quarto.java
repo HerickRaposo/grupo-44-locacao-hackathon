@@ -1,6 +1,6 @@
-package com.fiap.locacao.dominio.quarto.entity;
+package com.fiap.locacao.dominio.quartos.quarto.entity;
 
-import com.fiap.locacao.dominio.predio.entity.Predio;
+import com.fiap.locacao.dominio.quartos.predio.entity.Predio;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
