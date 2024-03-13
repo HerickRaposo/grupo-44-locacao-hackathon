@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  locacao-app: # Renomeado para locacao-app
+    image: openjdk:latest
+    container_name: locacao-app # Renomeado
+    working_dir: /app
+    volumes:
+      - ./target:/app
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://locacao-db:3306/locacao_hackathon?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=America/Sao_Paulo # Corrigido o nome do serviço
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=
+    depends_on:
+      - locacao-db # Renomeado
+    command: ["java", "-jar", "/app/parquimetro-app.jar"]
+
+  locacao-db: # Renomeado para locacao-db
+    image: mysql:8
+    container_name: locacao-db # Renomeado
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_DATABASE=grupo44
+    ports:
+      - "3306:3306"
