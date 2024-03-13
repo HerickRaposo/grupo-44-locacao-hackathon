@@ -18,12 +18,14 @@ public class PredioDTO {
     private Long id;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<QuartoDTO> listaquartos;
+    private Long idEndereco;
 //    @NotNull("Endereço não pode ser nulo")
 //    private EnderecoDTO endereco;
 
 
     public PredioDTO(Predio entity) {
         this.id = entity.getId();
+        this.idEndereco = entity.getIdEndereco();
         //this.endereco = new EnderecoDTO(entity.getEndereco());
         if (entity.getListaquartos() != null) {
             if (listaquartos == null) {

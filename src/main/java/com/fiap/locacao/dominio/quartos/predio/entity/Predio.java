@@ -17,5 +17,5 @@ public class Predio {
     private Long id;
     @OneToMany(mappedBy = "predio")
     private List<Quarto> listaquartos;
-    //private Endereco endereco;
+    private Long idEndereco;
 }
