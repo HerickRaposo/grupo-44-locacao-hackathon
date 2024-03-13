@@ -10,6 +10,7 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,19 +23,18 @@ import java.util.List;
 @Table(name = "tb_cliente")
 public class Cliente {
 
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
-    private String sobrenome;
-    private String sexo;
-    private String dataNascimento;
-    private Integer idade;
+    private String paisOrigem;
+    private String cpf;
+    private String passaPorte;
+    private String nomeCompleto;
+    private LocalDate dataNascimento;
+    private String telefone;
     private String email;
-    private String phone;
-    private String cell;
-    private String fotosUrls;
-    private String nat;
 
     @CreationTimestamp
     private Instant dataDeCriacao;

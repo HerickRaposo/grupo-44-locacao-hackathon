@@ -127,16 +127,14 @@ public class ClienteService {
 
     @Transactional(readOnly = true)
     public void mapperDtoToEntity(ClienteDTO dto, Cliente entity) {
-        entity.setNome(dto.getNome());
-        entity.setSobrenome(dto.getSobrenome());
+        entity.setNomeCompleto(dto.getNomeCompleto());
+        entity.setPaisOrigem(dto.getPaisOrigem());
         entity.setDataNascimento(dto.getDataNascimento());
-        entity.setSexo(dto.getSexo());
-        entity.setIdade(dto.getIdade());
+        entity.setCpf(dto.getCpf());
+        entity.setPassaPorte(dto.getPassaPorte());
         entity.setEmail(dto.getEmail());
-        entity.setPhone(dto.getPhone());
-        entity.setCell(dto.getCell());
-        entity.setFotosUrls(dto.getFotosUrls());
-        entity.setNat(dto.getNat());
+        entity.setTelefone(dto.getTelefone());
+
 
     }
 

@@ -8,52 +8,50 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.br.CPF;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @NoArgsConstructor
 public class ClienteDTO {
-
-
     private Long id;
-
+    @NotNull(message = "País de origem não pode deve ser nulo")
+    @NotBlank(message = "Você deve preenche um País de origem, não pode ser vazio")
+    private String paisOrigem;
+    @CPF
+    private String cpf;
+    @NotNull(message = "Passaporte não pode deve ser nulo")
+    @NotBlank(message = "Você deve preenche um Passaporte, não pode ser vazio")
+    private String passaPorte;
     @NotNull(message = "Nome não pode deve ser nulo")
     @NotBlank(message = "Você deve preenche um nome, não pode ser vazio")
-    private String nome;
-
-
-    @NotNull(message = "Sobrenome não pode deve ser nulo")
-    private String sobrenome;
-
-    private String dataNascimento;
-    @NotNull(message = "Sexo não deve ser nulo")
-    @NotBlank(message = "Sexo deve ser apenas um caractere")
-    @Max(value = 1, message = "Sexo só pode ter uma letra 'M' para masculino  ou 'F' para feminino")
-    private String sexo;
-    private Integer idade;
+    private String nomeCompleto;
+    @NotNull(message = "Campo Data não pode deve ser nulo")
+    @NotBlank(message = "Você deve preenche uma Data, não pode ser vazio")
+    private LocalDate dataNascimento;
+    @NotNull(message = "Telefone não pode deve ser nulo")
+    @NotBlank(message = "Você deve preenche um Telefone, não pode ser vazio")
+    private String telefone;
+    @NotNull(message = "Email não pode deve ser nulo")
+    @NotBlank(message = "Você deve preenche um email, não pode ser vazio")
     private String email;
-    private String phone;
-    private String cell;
-    private String fotosUrls;
-    private String nat;
+
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private List<EnderecoDTO> enderecos = new ArrayList<>();
 
 
     public ClienteDTO(Cliente entidade) {
         this.id = entidade.getId();
-        this.nome = entidade.getNome();
-        this.sobrenome = entidade.getSobrenome();
+        this.nomeCompleto = entidade.getNomeCompleto();
         this.dataNascimento = entidade.getDataNascimento();
-        this.sexo = entidade.getSexo();
-        this.idade = entidade.getIdade();
+        this.cpf = entidade.getCpf();
         this.email = entidade.getEmail();
-        this.phone = entidade.getPhone();
-        this.cell = entidade.getCell();
-        this.fotosUrls = entidade.getFotosUrls();
-        this.nat = entidade.getNat();
+        this.paisOrigem = entidade.getPaisOrigem();
+        this.passaPorte = entidade.getPassaPorte();
+        this.telefone = entidade.getTelefone();
     }
 
     public ClienteDTO(Cliente cliente, List<EnderecoDTO> enderecosDTO) {
