@@ -1,6 +1,6 @@
 package com.fiap.locacao.adapters.dto;
 
-import com.fiap.locacao.dominio.endereco.entities.Endereco;
+import com.fiap.locacao.dominio.gestao.endereco.entities.Endereco;
 import lombok.Getter;
 import lombok.Setter;
 

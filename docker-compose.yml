@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  ms-usuario-app: # Renomeado para ms-location-app
+  ms-location-app: # Renomeado para ms-location-app
     image: openjdk:latest
     container_name: ms-location-app # Renomeado
     working_dir: /app
@@ -10,14 +10,14 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://ms-location-db:3306/ms_usuario?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=America/Sao_Paulo # Corrigido o nome do serviço
+      - SPRING_DATASOURCE_URL=jdbc:mysql://ms-location-db:3306/ms_location?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=America/Sao_Paulo # Corrigido o nome do serviço
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=
     depends_on:
       - ms-location-db # Renomeado
     command: ["java", "-jar", "/app/location-app.jar"]
 
-  ms-usuario-db: # Renomeado para ms-location-db
+  ms-location-db: # Renomeado para ms-location-db
     image: mysql:8
     container_name: ms-location-db # Renomeado
     environment:
