@@ -28,7 +28,7 @@ public class EnderecoResultViaCepDTO {
 		endereco.setNumero(ibge);
 		endereco.setRua(logradouro);
 		endereco.setCep(cepDTO.getCep());
-		endereco.setCondutores(Arrays.asList(cepDTO.getCliente()));
+		endereco.setClientes(Arrays.asList(cepDTO.getCliente()));
 		return endereco;
 	}
 	

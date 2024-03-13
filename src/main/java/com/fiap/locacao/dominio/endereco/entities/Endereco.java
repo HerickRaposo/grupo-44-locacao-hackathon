@@ -27,10 +27,10 @@ public class Endereco {
 	private String cidade;
 	private String estado;
 	@ManyToMany
-	@JoinTable(name = "tb_endereco_condutor",
+	@JoinTable(name = "tb_endereco_cliente",
 			joinColumns = @JoinColumn(name = "endereco_id"),
-			inverseJoinColumns = @JoinColumn(name = "condutor_id"))
-	private List<Cliente> condutores= new ArrayList<>();
+			inverseJoinColumns = @JoinColumn(name = "cliente_id"))
+	private List<Cliente> clientes= new ArrayList<>();
 
 
 

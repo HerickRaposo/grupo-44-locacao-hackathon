@@ -84,7 +84,7 @@ public class EnderecoService {
         		clienteDTOSDTO   = new ArrayList<ClienteDTO>();
         		enderecoDTO= new EnderecoDTO();
         		BeanUtils.copyProperties(endereco, enderecoDTO);
-        		for (Cliente cliente : endereco.getCondutores()) {
+        		for (Cliente cliente : endereco.getClientes()) {
         			pessoaDTO=new ClienteDTO();
         			BeanUtils.copyProperties(cliente, pessoaDTO);
         			clienteDTOSDTO.add(pessoaDTO);
