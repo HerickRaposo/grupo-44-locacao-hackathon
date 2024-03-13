@@ -86,10 +86,11 @@ public class ClienteService {
     public ClienteDTO insert(ClienteDTO dto) {
         Cliente entity = new Cliente();
         mapperDtoToEntity(dto,entity);
-        var  pessoaSaved = repo.save(entity);
+
         if (repo.existsByCpf(dto.getCpf())) {
             throw new RuntimeException("CPF já cadastrado");
         }
+        var  pessoaSaved = repo.save(entity);
         return new ClienteDTO(pessoaSaved);
     }
 
