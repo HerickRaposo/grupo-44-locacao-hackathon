@@ -1,5 +1,9 @@
 # GRUPO 44 Locação  Hackathon
 
+![img.png](img.png)
+
+
+
 
 
 ## Getting started

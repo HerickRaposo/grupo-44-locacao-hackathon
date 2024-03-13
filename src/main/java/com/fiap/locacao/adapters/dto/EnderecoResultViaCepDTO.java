@@ -1,6 +1,6 @@
 package com.fiap.locacao.adapters.dto;
 
-import com.fiap.locacao.dominio.endereco.entities.Endereco;
+import com.fiap.locacao.dominio.gestao.endereco.entities.Endereco;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,7 +28,7 @@ public class EnderecoResultViaCepDTO {
 		endereco.setNumero(ibge);
 		endereco.setRua(logradouro);
 		endereco.setCep(cepDTO.getCep());
-		endereco.setCondutores(Arrays.asList(cepDTO.getCliente()));
+		endereco.setClientes(Arrays.asList(cepDTO.getCliente()));
 		return endereco;
 	}
 	
