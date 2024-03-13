@@ -89,6 +89,10 @@ public class ClienteService {
 
         if (repo.existsByCpf(dto.getCpf())) {
             throw new RuntimeException("CPF já cadastrado");
+        }else if(repo.existsByPassaPorte(dto.getPassaPorte())){
+            throw new RuntimeException("Passaporte já cadastrado");
+        }else if(repo.existsByEmail(dto.getEmail())){
+            throw new RuntimeException("E-mail já cadastrado");
         }
         var  pessoaSaved = repo.save(entity);
         return new ClienteDTO(pessoaSaved);
