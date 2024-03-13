@@ -3,6 +3,7 @@ package com.fiap.locacao.dominio.gestao.cliente.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fiap.locacao.dominio.gestao.cliente.entities.Cliente;
 import com.fiap.locacao.dominio.gestao.endereco.dto.EnderecoDTO;
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -17,23 +18,30 @@ import java.util.List;
 @NoArgsConstructor
 public class ClienteDTO {
     private Long id;
+
     @NotNull(message = "País de origem não pode deve ser nulo")
     @NotBlank(message = "Você deve preenche um País de origem, não pode ser vazio")
     private String paisOrigem;
+
     @CPF
+    @Column(unique = true) // Garante que o CPF seja único
     private String cpf;
+
     @NotNull(message = "Passaporte não pode deve ser nulo")
-    @NotBlank(message = "Você deve preenche um Passaporte, não pode ser vazio")
+    @NotBlank(message = "Você deve preenche um nome, não pode ser vazio")
     private String passaPorte;
+
     @NotNull(message = "Nome não pode deve ser nulo")
     @NotBlank(message = "Você deve preenche um nome, não pode ser vazio")
     private String nomeCompleto;
+
     @NotNull(message = "Campo Data não pode deve ser nulo")
-    @NotBlank(message = "Você deve preenche uma Data, não pode ser vazio")
     private LocalDate dataNascimento;
+
     @NotNull(message = "Telefone não pode deve ser nulo")
     @NotBlank(message = "Você deve preenche um Telefone, não pode ser vazio")
     private String telefone;
+
     @NotNull(message = "Email não pode deve ser nulo")
     @NotBlank(message = "Você deve preenche um email, não pode ser vazio")
     private String email;

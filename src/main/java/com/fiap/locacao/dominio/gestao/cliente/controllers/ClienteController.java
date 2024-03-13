@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -61,11 +62,16 @@ public class ClienteController {
             @ApiResponse(responseCode = "404", description = "Client not found"),
             @ApiResponse(responseCode = "500", description = "Erro no servidor")})
     @PostMapping
-    public ResponseEntity<ClienteDTO> insert(@RequestBody ClienteDTO cliente){
-        cliente = clienteService.insert(cliente);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{id}").buildAndExpand(cliente.getId()).toUri();
-        return ResponseEntity.created(uri).body(cliente);
+    public ResponseEntity<?> insert(@RequestBody @Valid ClienteDTO cliente){
+        try {
+
+            cliente = clienteService.insert(cliente);
+            URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+                    .path("/{id}").buildAndExpand(cliente.getId()).toUri();
+            return ResponseEntity.created(uri).body(cliente);
+        }catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
     @Operation(summary = "Atualiza cliente em todos os campos passando o id do cliente",method = "PUT")
