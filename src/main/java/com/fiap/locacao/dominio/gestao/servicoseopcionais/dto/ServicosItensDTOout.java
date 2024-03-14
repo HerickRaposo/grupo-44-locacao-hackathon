@@ -2,6 +2,7 @@ package com.fiap.locacao.dominio.gestao.servicoseopcionais.dto;
 
 import java.math.BigDecimal;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fiap.locacao.dominio.gestao.servicoseopcionais.entity.ServicosItens;
 import com.fiap.locacao.dominio.gestao.servicoseopcionais.enumerations.TipoServicosItens;
 
@@ -20,6 +21,7 @@ public class ServicosItensDTOout {
 	@Enumerated(EnumType.STRING)
 	private TipoServicosItens tipoServicosItens;
 	
+	@JsonIgnore
 	public ServicosItensDTOout getDTO(ServicosItens servicosItens) {
 		this.setId(servicosItens.getId());
 		this.setDescricao(servicosItens.getDescricao());

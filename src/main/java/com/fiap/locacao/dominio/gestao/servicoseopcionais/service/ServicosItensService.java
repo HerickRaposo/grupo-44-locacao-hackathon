@@ -1,10 +1,9 @@
 package com.fiap.locacao.dominio.gestao.servicoseopcionais.service;
 
-import java.util.List;
-
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import com.fiap.locacao.dominio.gestao.endereco.dto.RestDataReturnDTO;
 import com.fiap.locacao.dominio.gestao.servicoseopcionais.dto.ServicosItensDTOin;
 import com.fiap.locacao.dominio.gestao.servicoseopcionais.dto.ServicosItensDTOout;
 import com.fiap.locacao.dominio.gestao.servicoseopcionais.enumerations.TipoServicosItens;
@@ -15,6 +14,6 @@ public interface ServicosItensService {
 	ServicosItensDTOout atualizar(ServicosItensDTOin servicosItensDTO,Long id);
 	String apagar(Long id);
 	ServicosItensDTOout buscarPorId(Long id);
-	List<ServicosItensDTOout> buscarTodos(PageRequest pageRequest);
-	List<ServicosItensDTOout> buscarPorTipo(PageRequest pageRequest,TipoServicosItens tipoServicosItens);
+	RestDataReturnDTO buscarTodos(PageRequest pageRequest);
+	RestDataReturnDTO buscarPorTipo(PageRequest pageRequest,TipoServicosItens tipoServicosItens);
 }

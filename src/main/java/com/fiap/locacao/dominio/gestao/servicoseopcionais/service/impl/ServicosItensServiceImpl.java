@@ -1,12 +1,17 @@
 package com.fiap.locacao.dominio.gestao.servicoseopcionais.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import com.fiap.locacao.dominio.gestao.endereco.dto.Paginator;
+import com.fiap.locacao.dominio.gestao.endereco.dto.RestDataReturnDTO;
 import com.fiap.locacao.dominio.gestao.servicoseopcionais.dto.ServicosItensDTOin;
 import com.fiap.locacao.dominio.gestao.servicoseopcionais.dto.ServicosItensDTOout;
 import com.fiap.locacao.dominio.gestao.servicoseopcionais.entity.ServicosItens;
@@ -72,14 +77,31 @@ public class ServicosItensServiceImpl implements ServicosItensService{
 	}
 
 	@Override
-	public List<ServicosItensDTOout> buscarTodos(PageRequest pageRequest) {
-		// TODO Auto-generated method stub
-		return null;
+	public RestDataReturnDTO buscarTodos(PageRequest pageRequest) {
+		 Page<ServicosItens> servicosItens = iServicosItensRepository.findAll(pageRequest);
+		 return retornoPaginator(servicosItens);
 	}
 
 	@Override
-	public List<ServicosItensDTOout> buscarPorTipo(PageRequest pageRequest,TipoServicosItens tipoServicosItens) {
-		// TODO Auto-generated method stub
-		return null;
+	public RestDataReturnDTO buscarPorTipo(PageRequest pageRequest,TipoServicosItens tipoServicosItens) {
+		 Page<ServicosItens> servicosItens = iServicosItensRepository.findAll(pageRequest);
+		 return retornoPaginator(servicosItens);
 	}
+	
+	public RestDataReturnDTO retornoPaginator(Page<ServicosItens> servicosItens) {
+		 List<ServicosItensDTOout> servicosItensDTOsout=new ArrayList<ServicosItensDTOout>();
+		 ServicosItensDTOout servicosItensDTOout;
+		 
+		 if(!servicosItens.isEmpty()) {
+			
+			 for (ServicosItens u : servicosItens.getContent()) {
+				 servicosItensDTOout=new ServicosItensDTOout();
+				 BeanUtils.copyProperties(u, servicosItensDTOout);
+				 servicosItensDTOsout.add(servicosItensDTOout);
+			}
+			return new RestDataReturnDTO(servicosItensDTOsout, new Paginator(servicosItens.getNumber(), servicosItens.getTotalElements(), servicosItens.getTotalPages()));
+		 }
+		 throw new ControllerNotFoundException("Nenhum Registo para listar na pagina especificada.");
+	}
+	
 }
