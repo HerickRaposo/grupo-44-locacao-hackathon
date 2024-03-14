@@ -2,6 +2,7 @@ package com.fiap.locacao.dominio.gestao.servicoseopcionais.dto;
 
 import java.math.BigDecimal;
 
+import com.fiap.locacao.dominio.gestao.servicoseopcionais.entity.ServicosItens;
 import com.fiap.locacao.dominio.gestao.servicoseopcionais.enumerations.TipoServicosItens;
 
 import jakarta.persistence.EnumType;
@@ -18,4 +19,12 @@ public class ServicosItensDTOout {
 	private BigDecimal valor;
 	@Enumerated(EnumType.STRING)
 	private TipoServicosItens tipoServicosItens;
+	
+	public ServicosItensDTOout getDTO(ServicosItens servicosItens) {
+		this.setId(servicosItens.getId());
+		this.setDescricao(servicosItens.getDescricao());
+		this.setTipoServicosItens(servicosItens.getTipoServicosItens());
+		this.setValor(servicosItens.getValor());
+		return this;
+	}
 }
