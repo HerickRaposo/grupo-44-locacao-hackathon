@@ -4,13 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fiap.locacao.dominio.gestao.endereco.dto.EnderecoDTO;
 import com.fiap.locacao.dominio.gestao.servicoseopcionais.dto.ServicosItensDTOin;
 import com.fiap.locacao.dominio.gestao.servicoseopcionais.dto.ServicosItensDTOout;
 import com.fiap.locacao.dominio.gestao.servicoseopcionais.service.ServicosItensService;
@@ -19,7 +22,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping(value = "/servicos-itens",produces = {"application/json"})
-@Tag(name = "API QUARTO")
+@Tag(name = "API Gestão de Serviços e Opcionais")
 public class ServicoItemController {
 	
 	private @Autowired ServicosItensService servicosItensService;
@@ -40,6 +43,12 @@ public class ServicoItemController {
 	public ResponseEntity<String> apagar(@PathVariable Long id) {
 		 String mensagem = this.servicosItensService.apagar(id);
 		 return ResponseEntity.status(HttpStatus.OK).body(mensagem);
+	}
+	
+	@GetMapping("/buscarPorId")
+	public ResponseEntity<ServicosItensDTOout> getID(@RequestParam Long id) {
+		 ServicosItensDTOout  servicosItens = this.servicosItensService.buscarPorId(id);
+		return ResponseEntity.status(HttpStatus.FOUND).body(servicosItens); 
 	}
 
 }
