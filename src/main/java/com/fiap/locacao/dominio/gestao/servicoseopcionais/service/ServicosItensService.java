@@ -11,7 +11,7 @@ import com.fiap.locacao.dominio.gestao.servicoseopcionais.dto.ServicosItensDTOou
 public interface ServicosItensService {
 	ServicosItensDTOout salvar(ServicosItensDTOin servicosItensDTO);
 	ServicosItensDTOout atualizar(ServicosItensDTOin servicosItensDTO,Long id);
-	void deletar(ServicosItensDTOin servicosItensDTO);
+	String apagar(Long id);
 	ServicosItensDTOout buscarPorId(ServicosItensDTOout servicosItensDTO);
 	List<ServicosItensDTOout> buscarTodos(ServicosItensDTOout servicosItensDTO);
 	List<ServicosItensDTOout> buscarPorTipo(ServicosItensDTOout servicosItensDTO);

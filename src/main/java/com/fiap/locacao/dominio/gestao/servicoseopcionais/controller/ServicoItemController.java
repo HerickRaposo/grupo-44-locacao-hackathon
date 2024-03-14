@@ -3,6 +3,7 @@ package com.fiap.locacao.dominio.gestao.servicoseopcionais.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -33,6 +34,12 @@ public class ServicoItemController {
 	public ResponseEntity<ServicosItensDTOout> atualizar(@RequestBody ServicosItensDTOin servicosItensDTO,@PathVariable Long id) {
 		ServicosItensDTOout servicosItens = this.servicosItensService.atualizar(servicosItensDTO,id);
 		return ResponseEntity.status(HttpStatus.ACCEPTED).body(servicosItens); 
+	}
+	
+	@DeleteMapping("/apagar/{id}")
+	public ResponseEntity<String> apagar(@PathVariable Long id) {
+		 String mensagem = this.servicosItensService.apagar(id);
+		 return ResponseEntity.status(HttpStatus.OK).body(mensagem);
 	}
 
 }

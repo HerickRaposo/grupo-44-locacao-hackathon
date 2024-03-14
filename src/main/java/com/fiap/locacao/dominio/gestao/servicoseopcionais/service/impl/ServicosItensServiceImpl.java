@@ -46,9 +46,15 @@ public class ServicosItensServiceImpl implements ServicosItensService{
 	}
 
 	@Override
-	public void deletar(ServicosItensDTOin servicosItensDTO) {
-		// TODO Auto-generated method stub
-		
+	public String apagar(Long id) {
+		Optional<ServicosItens> OservicosItens = this.iServicosItensRepository.findById(id);
+		try {
+			 ServicosItens servicosItens = OservicosItens.get();
+			 this.iServicosItensRepository.delete(servicosItens);
+			 return "Removido o endereço de ID: "+id;
+		}catch(Exception e) {
+			throw new ControllerNotFoundException("Endereço não encontrado, id: " + id);			
+		}
 	}
 
 	@Override
