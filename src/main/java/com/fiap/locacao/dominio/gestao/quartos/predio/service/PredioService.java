@@ -1,9 +1,13 @@
-package com.fiap.locacao.dominio.quartos.predio.service;
+package com.fiap.locacao.dominio.gestao.quartos.predio.service;
 
-import com.fiap.locacao.dominio.quartos.predio.dto.PredioDTO;
-import com.fiap.locacao.dominio.quartos.predio.entity.Predio;
-import com.fiap.locacao.dominio.quartos.predio.repository.IPredioRepository;
-import com.fiap.locacao.dominio.quartos.quarto.dto.QuartoDTO;
+import com.fiap.locacao.dominio.gestao.endereco.services.EnderecoService;
+import com.fiap.locacao.dominio.gestao.quartos.localidade.dto.LocalidadeDTO;
+import com.fiap.locacao.dominio.gestao.quartos.localidade.entities.Localidade;
+import com.fiap.locacao.dominio.gestao.quartos.localidade.services.LocalidadeService;
+import com.fiap.locacao.dominio.gestao.quartos.predio.dto.PredioDTO;
+import com.fiap.locacao.dominio.gestao.quartos.predio.entity.Predio;
+import com.fiap.locacao.dominio.gestao.quartos.predio.repository.IPredioRepository;
+import com.fiap.locacao.dominio.gestao.quartos.quarto.dto.QuartoDTO;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
@@ -19,13 +23,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
 public class PredioService {
     @Autowired
     private IPredioRepository repo;
+
+    @Autowired
+    private LocalidadeService localidadeService;
 
     public List<String> validate(PredioDTO dto){
         Set<ConstraintViolation<PredioDTO>> violacoes = Validation.buildDefaultValidatorFactory().getValidator().validate(dto);
@@ -72,12 +81,12 @@ public class PredioService {
     public PredioDTO insert(PredioDTO dto) {
         Predio entity = new Predio();
         BeanUtils.copyProperties(dto, entity);
-//        if (dto.getIdEndereco() != null){
-//            EnderecoDTO enderecoDTO = enderecoService.findById(dto.getEndereco().getId());
-//            Endereco endereco = new Endereco();
-//            BeanUtils.copyProperties(enderecoDTO, endereco);
-//            entity.setEndereco(endereco);
-//        }
+        if (dto.getLocalidade() != null){
+            LocalidadeDTO localidadeDTO = localidadeService.findById(dto.getLocalidade().getId());
+            Localidade localidade = new Localidade();
+            BeanUtils.copyProperties(localidadeDTO, localidade);
+            entity.setLocalidade(localidade);
+        }
         var predioSaved = repo.save(entity);
         return new PredioDTO(predioSaved);
     }
@@ -101,6 +110,6 @@ public class PredioService {
         } catch (DataIntegrityViolationException e) {
             throw new DataIntegrityViolationException("Violação de integridade da base");
         }
-
     }
 }
+
