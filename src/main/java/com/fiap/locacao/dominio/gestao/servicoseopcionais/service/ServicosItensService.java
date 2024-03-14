@@ -2,13 +2,17 @@ package com.fiap.locacao.dominio.gestao.servicoseopcionais.service;
 
 import java.util.List;
 
-import com.fiap.locacao.dominio.gestao.servicoseopcionais.dto.ServicosItensDTO;
+import org.springframework.stereotype.Service;
 
+import com.fiap.locacao.dominio.gestao.servicoseopcionais.dto.ServicosItensDTOin;
+import com.fiap.locacao.dominio.gestao.servicoseopcionais.dto.ServicosItensDTOout;
+
+@Service
 public interface ServicosItensService {
-	ServicosItensDTO salvar(ServicosItensDTO servicosItensDTO);
-	ServicosItensDTO atualizar(ServicosItensDTO servicosItensDTO);
-	void deletar(ServicosItensDTO servicosItensDTO);
-	ServicosItensDTO buscarPorId(ServicosItensDTO servicosItensDTO);
-	List<ServicosItensDTO> buscarTodos(ServicosItensDTO servicosItensDTO);
-	List<ServicosItensDTO> buscarPorTipo(ServicosItensDTO servicosItensDTO);
+	ServicosItensDTOout salvar(ServicosItensDTOin servicosItensDTO);
+	ServicosItensDTOout atualizar(ServicosItensDTOin servicosItensDTO,Long id);
+	void deletar(ServicosItensDTOin servicosItensDTO);
+	ServicosItensDTOout buscarPorId(ServicosItensDTOout servicosItensDTO);
+	List<ServicosItensDTOout> buscarTodos(ServicosItensDTOout servicosItensDTO);
+	List<ServicosItensDTOout> buscarPorTipo(ServicosItensDTOout servicosItensDTO);
 }

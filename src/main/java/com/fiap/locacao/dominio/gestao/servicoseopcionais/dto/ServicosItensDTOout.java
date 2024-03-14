@@ -12,7 +12,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ServicosItensDTO {
+public class ServicosItensDTOout {
 	private Long id;
 	private String descricao;
 	private BigDecimal valor;
