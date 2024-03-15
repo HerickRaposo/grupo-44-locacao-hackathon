@@ -2,6 +2,7 @@ package com.fiap.locacao.dominio.gestao.endereco.entities;
 
 
 import com.fiap.locacao.dominio.gestao.cliente.entities.Cliente;
+import com.fiap.locacao.dominio.gestao.localidade.entities.Localidade;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,11 +27,15 @@ public class Endereco {
 	private String bairro;
 	private String cidade;
 	private String estado;
+
 	@ManyToMany
 	@JoinTable(name = "tb_endereco_cliente",
 			joinColumns = @JoinColumn(name = "endereco_id"),
 			inverseJoinColumns = @JoinColumn(name = "cliente_id"))
 	private List<Cliente> clientes= new ArrayList<>();
+
+	@OneToOne(mappedBy = "endereco")
+	private Localidade localidade;
 
 
 

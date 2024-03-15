@@ -27,6 +27,13 @@ public class ControllerEndereco {
 		EnderecoDTO enderecoDTO = this.enderecoService.salvar(cepDTO);
 		return ResponseEntity.status(HttpStatus.CREATED).body(enderecoDTO); 
 	}
+
+	@PostMapping("/cadastrar")
+	public ResponseEntity<EnderecoDTO> cadastrar(@Valid @RequestBody EnderecoDTO endereco) {
+
+		EnderecoDTO enderecoDTO = this.enderecoService.cadastrar(endereco);
+		return ResponseEntity.status(HttpStatus.CREATED).body(enderecoDTO);
+	}
 	
 	@PutMapping("/atualizar/{id}")
 	public ResponseEntity<EnderecoDTO> atualizar(@RequestBody EnderecoDTO enderecoDTO,@PathVariable Long id) {

@@ -123,4 +123,13 @@ public class EnderecoService {
 		}
         throw new ControllerNotFoundException("Endereço não encontrado, id: " + id);
 	}
+
+	public EnderecoDTO cadastrar(EnderecoDTO enderecoDTO) {
+		Endereco endereco = new Endereco();
+
+		BeanUtils.copyProperties(enderecoDTO,endereco);
+		var enderecoSaved = enderecoRepository.save(endereco);
+		return new EnderecoDTO(endereco);
+
+	}
 }
