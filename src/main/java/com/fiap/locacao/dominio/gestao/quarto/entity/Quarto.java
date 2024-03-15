@@ -2,12 +2,10 @@ package com.fiap.locacao.dominio.gestao.quarto.entity;
 
 import com.fiap.locacao.dominio.gestao.predio.entity.Predio;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
+@Builder
 @Getter
 @Setter
 @AllArgsConstructor

@@ -3,10 +3,10 @@ package com.fiap.locacao.dominio.gestao.endereco.dto;
 
 import com.fiap.locacao.dominio.gestao.endereco.entities.Endereco;
 import jakarta.validation.constraints.NotBlank;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Range;
-
 
 
 @Getter

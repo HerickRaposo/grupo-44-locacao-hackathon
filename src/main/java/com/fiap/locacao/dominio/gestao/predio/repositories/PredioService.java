@@ -1,4 +1,4 @@
-package com.fiap.locacao.dominio.gestao.predio.service;
+package com.fiap.locacao.dominio.gestao.predio.repositories;
 
 import com.fiap.locacao.dominio.gestao.localidade.dto.LocalidadeDTO;
 import com.fiap.locacao.dominio.gestao.localidade.entities.Localidade;
@@ -93,8 +93,9 @@ public class PredioService {
     @Transactional
     public PredioDTO update(Long id, PredioDTO dto) {
         try {
-            Predio entity = repo.getOne(id);
+            Predio entity = repo.getReferenceById(id);
             BeanUtils.copyProperties(dto, entity);
+            entity = repo.save(entity);
             return new PredioDTO(entity);
         } catch (EntityNotFoundException e) {
             throw  new EntityNotFoundException("Produto não encontrado, id:" + id);

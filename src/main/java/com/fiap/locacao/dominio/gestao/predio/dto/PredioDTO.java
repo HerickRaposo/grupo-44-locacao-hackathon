@@ -7,6 +7,7 @@ import com.fiap.locacao.dominio.gestao.quarto.dto.QuartoDTO;
 import com.fiap.locacao.dominio.gestao.quarto.entity.Quarto;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class PredioDTO {

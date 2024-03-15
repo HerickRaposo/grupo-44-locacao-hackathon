@@ -1,7 +1,7 @@
 package com.fiap.locacao.dominio.gestao.predio.controller;
 
 import com.fiap.locacao.dominio.gestao.predio.dto.PredioDTO;
-import com.fiap.locacao.dominio.gestao.predio.service.PredioService;
+import com.fiap.locacao.dominio.gestao.predio.repositories.PredioService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
