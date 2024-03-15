@@ -1,6 +1,7 @@
 package com.fiap.locacao.dominio.gestao.quartos.localidade.entities;
 
 import com.fiap.locacao.dominio.gestao.endereco.entities.Endereco;
+import com.fiap.locacao.dominio.gestao.quartos.localidade.enumerations.Amenidades;
 import com.fiap.locacao.dominio.gestao.quartos.predio.entity.Predio;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -24,5 +25,5 @@ public class Localidade {
     private Endereco endereco;
     @OneToMany(mappedBy = "localidade")
     private List<Predio> listaPredios;
-    private List<Long> idsAmenidades;
+    private Amenidades idsAmenidades;
 }
