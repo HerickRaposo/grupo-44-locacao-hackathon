@@ -1194,3 +1194,52 @@ Content-Type: application/json
 
 
 ```
+
+Testes unitãrios: 
+
+```
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /clientes/4
+       Parameters = {}
+          Headers = []
+             Body = <no character encoding set>
+    Session Attrs = {}
+
+Handler:
+             Type = com.fiap.locacao.dominio.gestao.cliente.controllers.ClienteController
+           Method = com.fiap.locacao.dominio.gestao.cliente.controllers.ClienteController#getProductById(Long)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:"application/json"]
+     Content type = application/json
+             Body = {"id":-1599008400270023032,"paisOrigem":null,"cpf":null,"passaPorte":null,"nomeCompleto":"usuario","dataNascimento":null,"telefone":null,"email":"usuariojava.util.Random@58324c9f@exemple.com"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+Process finished with exit code 0
+
+
+
+```
+
+
+![img_1.png](img_1.png)
