@@ -1,6 +1,19 @@
 # GRUPO 44 Locação  Hackathon
 
+
+# Arquivo jar da aplicação diretorório pacote , dentro de domínio.<BR> Nessa pasta está o jar da aplicação
+
+![img_2.png](img_2.png)
+
+# Arquivo jar da aplicação
+
+[locacao-0.0.1-SNAPSHOT.jar](src%2Fmain%2Fjava%2Fcom%2Ffiap%2Flocacao%2Fdominio%2Fpacote%2Flocacao-0.0.1-SNAPSHOT.jar)
+
 ![img.png](img.png)
+
+# Arquivo build maven
+
+![img_4.png](img_4.png)
 
 ## Introdução:
 
