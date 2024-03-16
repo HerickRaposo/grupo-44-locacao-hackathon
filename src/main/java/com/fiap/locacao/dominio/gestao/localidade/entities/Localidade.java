@@ -31,5 +31,9 @@ public class Localidade {
 
     @OneToMany(mappedBy = "localidade")
     private List<Predio> listaPredios;
-    private List<Amenidades> idsAmenidades;
+
+    @ElementCollection
+    @CollectionTable(name = "localidade_amenidades", joinColumns = @JoinColumn(name = "localidade_id"))
+    @Column(name = "amenidade_id")
+    private List<Long> idsAmenidades;
 }

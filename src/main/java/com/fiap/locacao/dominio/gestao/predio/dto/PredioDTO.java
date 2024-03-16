@@ -1,6 +1,6 @@
 package com.fiap.locacao.dominio.gestao.predio.dto;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.*;
 import com.fiap.locacao.dominio.gestao.localidade.dto.LocalidadeDTO;
 import com.fiap.locacao.dominio.gestao.predio.entity.Predio;
 import com.fiap.locacao.dominio.gestao.quarto.dto.QuartoDTO;
@@ -24,6 +24,7 @@ public class PredioDTO {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<QuartoDTO> listaquartos;
     @NotNull(message = "Localidade não pode ser nulo")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private LocalidadeDTO localidade;
 
 
