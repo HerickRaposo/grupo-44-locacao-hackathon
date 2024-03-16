@@ -6,6 +6,8 @@ import com.fiap.locacao.dominio.gestao.endereco.dto.EnderecoDTO;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CPF;
@@ -15,7 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class ClienteDTO {
     private Long id;
 

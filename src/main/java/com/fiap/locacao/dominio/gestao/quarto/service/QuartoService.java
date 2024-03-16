@@ -71,19 +71,21 @@ public class QuartoService {
 
 
         Specification<Quarto> specification = Specification.where(null);
-        if (filtro.getTipo() != null) {
-            specification = specification.and((root, query, builder) ->
-                    builder.equal(root.get("tipo"), filtro.getTipo()));
-        }
+        if (filtro != null) {
+            if (filtro.getTipo() != null) {
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("tipo"), filtro.getTipo()));
+            }
 
-        if (filtro.getReservado() != null) {
-            specification = specification.and((root, query, builder) ->
-                    builder.equal(root.get("reservado"), filtro.getReservado()));
-        }
+            if (filtro.getReservado() != null) {
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("reservado"), filtro.getReservado()));
+            }
 
-        if (filtro.getPredio() != null && filtro.getPredio().getId() != null) {
-            specification = specification.and((root, query, builder) ->
-                    builder.equal(root.get("id_predio"), filtro.getPredio().getId()));
+            if (filtro.getPredio() != null && filtro.getPredio().getId() != null) {
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("id_predio"), filtro.getPredio().getId()));
+            }
         }
 
         var quartos = repo.findAll(specification,pagina);
@@ -114,7 +116,7 @@ public class QuartoService {
     @Transactional
     public QuartoDTO update(Long id, QuartoDTO dto) {
         try {
-            Quarto entity = repo.getOne(id);
+            Quarto entity = repo.getReferenceById(id);
             BeanUtils.copyProperties(dto, entity);
             return new QuartoDTO(entity);
         } catch (EntityNotFoundException e) {

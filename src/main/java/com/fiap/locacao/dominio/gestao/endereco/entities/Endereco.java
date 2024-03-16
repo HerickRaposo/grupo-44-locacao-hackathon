@@ -5,6 +5,7 @@ import com.fiap.locacao.dominio.gestao.cliente.entities.Cliente;
 import com.fiap.locacao.dominio.gestao.localidade.entities.Localidade;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +15,7 @@ import java.util.List;
 
 @Data
 @Entity
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "tb_endereco")
