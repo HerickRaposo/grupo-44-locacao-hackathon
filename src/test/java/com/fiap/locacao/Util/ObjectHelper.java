@@ -66,7 +66,7 @@ public class ObjectHelper {
                 .reservado(random.nextBoolean())
                 .predio(gerarPredio()).build();
     }
-
+//comentarioo
     public static String asJsonString(final Object object) throws JsonProcessingException {
         return new ObjectMapper().writeValueAsString(object);
     }
