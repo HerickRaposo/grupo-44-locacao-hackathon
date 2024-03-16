@@ -1,7 +1,7 @@
 # GRUPO 44 Locação  Hackathon
 
 
-# Arquivo jar da aplicação diretorório pacote , dentro de domínio.<BR> Nessa pasta está o jar da aplicação
+# Arquivo jar da aplicação diretório pacote , dentro de domínio.<BR> Nessa pasta está o jar da aplicação
 
 ![img_2.png](img_2.png)
 
