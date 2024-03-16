@@ -53,6 +53,7 @@ public class EmailSenderConfig {
             mailSender.setUsername(emailUser);
             mailSender.setPassword(emailPassword);
             return mailSender;
+            // pok
         }
 
 //       Properties props = mailSender.getJavaMailProperties();
